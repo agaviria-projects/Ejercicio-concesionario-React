@@ -28,7 +28,7 @@ function CustomerForm({ fetchCustomers, selectedCustomer, clearSelectedCustomer 
     try {
       if (selectedCustomer) {
         // Actualizar cliente (PUT)
-        await fetch(`http://localhost:8080/api/Customer/${selectedCustomer.id}`, {
+        await fetch(`https://centerbeam.proxy.rlwy.net:24066/api/Customer${selectedCustomer.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(customerData),
@@ -36,13 +36,13 @@ function CustomerForm({ fetchCustomers, selectedCustomer, clearSelectedCustomer 
         clearSelectedCustomer();
       } else {
         // Crear cliente nuevo (POST)
-        await fetch("http://localhost:8080/api/Customer", {
+        await fetch("https://centerbeam.proxy.rlwy.net:24066/api/Customer", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(customerData),
         });
       }
-
+    
       setName("");
       setEmail("");
       setFullname("");
